@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
     <!-- Styles -->
     <style>
         html, body {
@@ -65,6 +67,25 @@
             text-transform: uppercase;
         }
 
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #ed7c2c;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #ed7c2c;
+            font-size: 25px;
+        }
+
+        .footer a:hover{
+
+            color: #c85300;
+
+        }
 
     </style>
 </head>
@@ -81,14 +102,20 @@
     <div class="content">
 
         <div id="menu" class="col-md-12 col-sm-12 col-xs-12" style="display: block;">
-            <img src="/images/flyer-sticks.jpg" alt="flyer">
+            <img src="/images/flyer-sticks.png" alt="flyer">
         </div>
         <div id="zonaDespacho" class="col-md-12 col-sm-12 col-xs-12" style="display: none;">
             <img src="/images/zona-despacho.jpeg" alt="delivery">
         </div>
 
     </div>
+    <div class="footer">
+        <a href="https://www.instagram.com/stickschile" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/stickschile" target="_blank"><i class="fab fa-facebook-square"></i></a>
+    </div>
 </div>
+
+
 </body>
 
 <script
