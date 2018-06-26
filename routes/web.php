@@ -13,6 +13,10 @@
 
 Route::get('/', function () {
 
+    if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->hasRole('Administrador')){
+        return redirect('/admin/dashboard');
+    }
+
     //Utilizar esta url para los tiempos de los pedidos
    // https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=Hermanos+Amun%C3%A1tegui+695,Santiago,Regi%C3%B3n+Metropolitana&destinations=Villaseca+701,%C3%91u%C3%B1oa,Regi%C3%B3n+Metropolitana&departure_time=now&key=AIzaSyCI_A_vgNYu8_CXuyNWvIKWZ9c3MYdjQBM
 
@@ -31,7 +35,14 @@ foreach ($units as $prefix => $namespace){
     Route::group(array('prefix' => $prefix), function () use ($prefix, $namespace) {
 
     if($prefix == 'admin'){
-        Route::resource('/', 'Admin\AdminController');
+
+        Route::prefix('dashboard')->group(function () {
+
+            Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard.index');
+
+
+        });
+
 
     }
     if($prefix == 'dashboard') {
