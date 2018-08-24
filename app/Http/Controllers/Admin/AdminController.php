@@ -15,10 +15,16 @@ class AdminController extends BaseController
 
     public function index(){
 
-        return 'Hola admin';
+        asset("");
+        return view('admin.index');
 
     }
 
+    public function test(){
+
+        return view('admin.layouts.test');
+
+    }
 
 
 

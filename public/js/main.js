@@ -1,5 +1,5 @@
 ;(function () {
-	
+
 	'use strict';
 
 	var isMobile = {
@@ -48,31 +48,12 @@
 
 	};
 
-	
+
 
 	var header = function() {
 		$('.header-fixed').css('padding-top', $('.sticks-nav').height());
 	};
 
-	var navigation = function() {
-
-		$('body').on('click', '#sticks-offcanvas ul a:not([class="external"]), .main-nav a:not([class="external"])', function(event){
-			var section = $(this).data('nav-section');
-				if ( $('[data-section="' + section + '"]').length ) {
-			    	$('html, body').animate({
-			        	scrollTop: $('[data-section="' + section + '"]').offset().top - 55
-			    	}, 500, 'easeInOutExpo');
-			   }
-
-			   if ($('body').hasClass('offcanvas')) {
-			   	$('body').removeClass('offcanvas');
-			   	$('.js-sticks-nav-toggle').removeClass('active');
-			   }
-		   event.preventDefault();
-		   return false;
-		});
-
-	};
 
 
 	var offcanvasMenu = function() {
@@ -96,14 +77,14 @@
 			$this
 				.addClass('active')
 				.find('ul')
-				.slideDown(500, 'easeOutExpo');				
+				.slideDown(500, 'easeOutExpo');
 		}).mouseleave(function(){
 
 			var $this = $(this);
 			$this
 				.removeClass('active')
 				.find('ul')
-				.slideUp(500, 'easeOutExpo');				
+				.slideUp(500, 'easeOutExpo');
 		});
 
 
@@ -113,7 +94,7 @@
 
     			$('body').removeClass('offcanvas');
     			$('.js-sticks-nav-toggle').removeClass('active');
-				
+
 	    	}
 		});
 	};
@@ -133,9 +114,9 @@
 	var navigationSection = function() {
 
 		var $section = $('div[data-section]');
-		
+
 		$section.waypoint(function(direction) {
-		  	
+
 		  	if (direction === 'down') {
 		    	navActive($(this.element).data('section'));
 		  	}
@@ -177,7 +158,7 @@
 		$('.animate-box').waypoint( function( direction ) {
 
 			if( direction === 'down' && !$(this.element).hasClass('animated-fast') ) {
-				
+
 				i++;
 
 				$(this.element).addClass('item-animate');
@@ -200,9 +181,9 @@
 							el.removeClass('item-animate');
 						},  k * 200, 'easeInOutExpo' );
 					});
-					
+
 				}, 100);
-				
+
 			}
 
 		} , { offset: '85%' } );
@@ -232,7 +213,7 @@
 
 
 	var owlCarousel = function(){
-		
+
 		var owl = $('.owl-carousel-carousel');
 		owl.owlCarousel({
 			items: 3,
@@ -280,13 +261,13 @@
 	var goToTop = function() {
 
 		$('.js-gotop').on('click', function(event){
-			
+
 			event.preventDefault();
 
 			$('html, body').animate({
 				scrollTop: $('html').offset().top
 			}, 500, 'easeInOutExpo');
-			
+
 			return false;
 		});
 
@@ -300,7 +281,7 @@
 			}
 
 		});
-	
+
 	};
 
 
@@ -320,9 +301,9 @@
 	var counterWayPoint = function() {
 		if ($('#sticks-counter').length > 0 ) {
 			$('#sticks-counter').waypoint( function( direction ) {
-										
+
 				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-					setTimeout( counter , 400);					
+					setTimeout( counter , 400);
 					$(this.element).addClass('animated');
 				}
 			} , { offset: '90%' } );
@@ -345,8 +326,8 @@
 	};
 
 	var sliderMain = function() {
-		
-	  	$('#sticks-hero .flexslider').flexslider({
+
+	  	$('#home .flexslider').flexslider({
 			animation: "fade",
 			slideshowSpeed: 5000,
 			directionNav: true,
@@ -365,19 +346,19 @@
 
 	  	});
 
-	  	$('#sticks-hero .flexslider .slides > li').css('height', $(window).height());
+	  	$('#home .flexslider .slides > li').css('height', $(window).height());
 	  	$(window).resize(function(){
-	  		$('#sticks-hero .flexslider .slides > li').css('height', $(window).height());
+	  		$('#home .flexslider .slides > li').css('height', $(window).height());
 	  	});
 
 	};
 
-	
+
 	$(function(){
 		fullHeight();
 		mobileMenuOutsideClick();
 		header();
-		navigation();
+
 		offcanvasMenu();
 		burgerMenu();
 		navigationSection();
@@ -393,3 +374,41 @@
 
 
 }());
+
+
+
+$(document).ready(function () {
+    //Initialize tooltips
+    $('.nav-tabs > li a[title]').tooltip();
+
+    //Wizard
+    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+        var $target = $(e.target);
+
+        if ($target.parent().hasClass('disabled')) {
+            return false;
+        }
+    });
+
+    $(".next-step").click(function (e) {
+
+        var $active = $('.wizard .nav-tabs li.active');
+        $active.next().removeClass('disabled');
+        nextTab($active);
+
+    });
+    $(".prev-step").click(function (e) {
+
+        var $active = $('.wizard .nav-tabs li.active');
+        prevTab($active);
+
+    });
+});
+
+function nextTab(elem) {
+    $(elem).next().find('a[data-toggle="tab"]').click();
+}
+function prevTab(elem) {
+    $(elem).prev().find('a[data-toggle="tab"]').click();
+}

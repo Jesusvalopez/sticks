@@ -11,12 +11,37 @@
                     </div>
                     <div class="col-xs-10 text-right menu-1 main-nav">
                         <ul>
-                            <li class="active"><a href="#" data-nav-section="home">Inicio</a></li>
-                            <li><a href="#" data-nav-section="menu">Menú</a></li>
-                            <li><a href="#" data-nav-section="delivery">Zona de Despacho</a></li>
-                            <li><a href="#" data-nav-section="blog">Blog</a></li>
-                            <li><a href="#" data-nav-section="contact">Contact</a></li>
-                            <li><a href="http://gettemplates.co/" class="external"><i class="fab ti-shopping-cart"> <span class="badge">5</span></i></a></li>
+                            <li class="active"><a href="#home" data-nav-section="home">Inicio</a></li>
+                            <li><a href="#menu" data-nav-section="menu">Menú</a></li>
+
+                            <li><a href="#order" data-nav-section="order">Cómo Ordenar</a></li>
+                            <li><a href="#contact" data-nav-section="contact">Contact</a></li>
+                            @guest
+                            <li>
+                                <a class="external" href="{{ route('login') }}">Iniciar Sesión</a>
+                            </li>
+                            <li class="">
+                                <a class="external" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
+                            </li>
+                            @else
+                                <li class="dropdown">
+                                    <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ ucfirst(Auth::user()->name) }} <span class="caret"></span>
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Cerrar Sesión
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                                @endguest
                         </ul>
                     </div>
                 </div>
@@ -24,7 +49,7 @@
             </div>
         </nav>
 
-        <div id="sticks-hero" class="js-fullheight"  data-section="home">
+        <div id="home" class="js-fullheight"  data-section="home">
             <div class="flexslider js-fullheight">
                 <ul class="slides">
                     <li style="background-image: url(images/img_bg_1.jpg);">
@@ -45,229 +70,192 @@
 
         <div class="sticks-section-overflow">
 
-            <div class="sticks-section" id="sticks-services" data-section="menu">
+            <div class="sticks-section" id="menu" data-section="menu">
                 <div class="sticks-container">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="sticks-heading">
                                 <h2 class="sticks-left">Menú</h2>
-                                <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                <p>Descripcion del producto</p>
                             </div>
                         </div>
                     </div>
                     <div class="row">
 
 
-                                <img src="/images/flyer-sticks.png" alt="">
+                        <div class="sticks-container">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a href="#" class="sticks-card-item has-text">
+                                        <figure>
+                                            <div class="overlay"><i class="ti-plus"></i></div>
+
+                                        </figure>
+                                        <div class="sticks-text text-left">
+                                            <h2>Queso crema + Tocino</h2>
+                                            <img class="sticks-image" src="/images/products/sticks-1.jpg" alt="">
+                                            <p class="sticks-category">$3.490</p>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <a href="#" class="sticks-card-item has-text">
+                                        <figure>
+                                            <div class="overlay"><i class="ti-plus"></i></div>
+
+                                        </figure>
+                                        <div class="sticks-text text-left">
+                                            <h2>Chocolate Blanco</h2>
+                                            <img class="sticks-image" src="/images/products/sticks-2.jpg" alt="">
+                                            <p class="sticks-category">$3.690</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="clearfix visible-sm-block"></div>
+                                <div class="col-md-4">
+                                    <a href="#" class="sticks-card-item has-text">
+                                        <figure>
+                                            <div class="overlay"><i class="ti-plus"></i></div>
+
+                                        </figure>
+                                        <div class="sticks-text text-left">
+                                            <h2>Queso Blanco</h2>
+                                            <img class="sticks-image" src="/images/products/sticks-3.jpg" alt="">
+                                            <p class="sticks-category">$2.990</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="clearfix visible-lg-block visible-md-block"></div>
+
+                                <div class="col-md-4">
+                                    <a href="#" class="sticks-card-item has-text">
+                                        <figure>
+                                            <div class="overlay"><i class="ti-plus"></i></div>
+
+                                        </figure>
+                                        <div class="sticks-text text-left">
+                                            <h2>Chocolate</h2>
+                                            <img class="sticks-image" src="/images/products/sticks-4.jpg" alt="">
+                                            <p class="sticks-category">$3.690</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="clearfix visible-sm-block"></div>
+
+                                <div class="col-md-4">
+                                    <a href="#" class="sticks-card-item has-text">
+                                        <figure>
+                                            <div class="overlay"><i class="ti-plus"></i></div>
+
+                                        </figure>
+                                        <div class="sticks-text text-left">
+                                            <h2>Guayaba con Queso</h2>
+                                            <img class="sticks-image" src="/images/products/sticks-5.jpg" alt="">
+                                            <p class="sticks-category">$3.490</p>
+                                        </div>
+                                    </a>
+                                </div>
+
+
+                                <div class="clearfix visible-lg-block visible-md-block"></div>
+                                <div class="clearfix visible-sm-block"></div>
+
+                            </div>
+                        </div>
 
 
                     </div>
                 </div>
             </div>
 
-            <div class="sticks-section" id="sticks-portfolio" data-section="delivery">
-                <div class="sticks-container">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 text-center sticks-heading">
-                            <h2>Zona de Despacho</h2>
-                            </div>
-                    </div>
-                    <div class="row">
 
-                        <iframe src="https://www.google.com/maps/d/embed?mid=1mbzkFYlrnkuiaHIz55YAvRlpDmI1D1hC" width="100%" height="480"></iframe>
 
-                    </div>
-                </div>
-            </div>
-
-            <div class="sticks-section" id="sticks-faq" data-section="faq">
-                <div class="sticks-container">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 text-center sticks-heading">
-                            <h2>Frequently Ask Questions</h2>
-                            <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-
-                            <div class="sticks-accordion">
-                                <div class="sticks-accordion-heading">
-                                    <div class="icon"><i class="icon-cross"></i></div>
-                                    <h3>What is Asymmetry?</h3>
-                                </div>
-                                <div class="sticks-accordion-content">
-                                    <div class="inner">
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sticks-accordion">
-                                <div class="sticks-accordion-heading">
-                                    <div class="icon"><i class="icon-cross"></i></div>
-                                    <h3>I have technical problem, who do I email?</h3>
-                                </div>
-                                <div class="sticks-accordion-content">
-                                    <div class="inner">
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sticks-accordion">
-                                <div class="sticks-accordion-heading">
-                                    <div class="icon"><i class="icon-cross"></i></div>
-                                    <h3>How do I use Asymmetry features?</h3>
-                                </div>
-                                <div class="sticks-accordion-content">
-                                    <div class="inner">
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-6">
-
-                            <div class="sticks-accordion">
-                                <div class="sticks-accordion-heading">
-                                    <div class="icon"><i class="icon-cross"></i></div>
-                                    <h3>What language are available?</h3>
-                                </div>
-                                <div class="sticks-accordion-content">
-                                    <div class="inner">
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sticks-accordion">
-                                <div class="sticks-accordion-heading">
-                                    <div class="icon"><i class="icon-cross"></i></div>
-                                    <h3>Can I have a username that is already taken?</h3>
-                                </div>
-                                <div class="sticks-accordion-content">
-                                    <div class="inner">
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sticks-accordion">
-                                <div class="sticks-accordion-heading">
-                                    <div class="icon"><i class="icon-cross"></i></div>
-                                    <h3>Is Asymmetry free?</h3>
-                                </div>
-                                <div class="sticks-accordion-content">
-                                    <div class="inner">
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
-
-        <div id="sticks-blog" data-section="blog">
+        <div class="">
+            <div id="order" class="sticks-section" data-section="order">
             <div class="sticks-container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center sticks-heading">
-                        <h2>Blog</h2>
-                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                        <h2>Cómo ordenar</h2>
+                        <p>Solamente sigue estos sencillos pasos</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <a href="#" class="sticks-card-item has-text">
-                            <figure>
-                                <div class="overlay"><i class="ti-plus"></i></div>
-                                <img src="images/img_1.jpg" alt="Image" class="img-responsive">
-                            </figure>
-                            <div class="sticks-text text-left">
-                                <h2>25 Minimal Web Design for Inspiration</h2>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-                                <p class="sticks-category">Sep. 25th, 2016 by John Doe</p>
-                            </div>
-                        </a>
+                <div class="wizard">
+                    <div class="wizard-inner">
+                        <div class="connecting-line"></div>
+                        <ul class="nav nav-tabs" role="tablist">
+
+                            <li role="presentation" class="active">
+                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Paso 1">
+                            <span class="round-tab">
+                                <i class="icon-phone"></i>
+                            </span>
+                                </a>
+                            </li>
+
+                            <li role="presentation" class="disabled">
+                                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Paso 2">
+                            <span class="round-tab">
+                              <i class="icon-map"></i>
+                            </span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Paso 3">
+                            <span class="round-tab">
+                               <i class="icon-credit-card"></i>
+                            </span>
+                                </a>
+                            </li>
+
+                            <li role="presentation" class="disabled">
+                                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="¡Listo!">
+                            <span class="round-tab">
+                                <i class="icon-check"></i>
+                            </span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
 
-                    <div class="col-md-4">
-                        <a href="#" class="sticks-card-item has-text">
-                            <figure>
-                                <div class="overlay"><i class="ti-plus"></i></div>
-                                <img src="images/img_2.jpg" alt="Image" class="img-responsive">
-                            </figure>
-                            <div class="sticks-text text-left">
-                                <h2>25 Minimal Web Design for Inspiration</h2>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-                                <p class="sticks-category">Sep. 25th, 2016 by John Doe</p>
+                    <form role="form">
+                        <div class="tab-content">
+                            <div class="tab-pane active" role="tabpanel" id="step1">
+                                <h3>Paso 1</h3>
+                                <p>Llámanos o escríbenos al +56 9 4234 4221</p>
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
+                                </ul>
                             </div>
-                        </a>
-                    </div>
-                    <div class="clearfix visible-sm-block"></div>
-                    <div class="col-md-4">
-                        <a href="#" class="sticks-card-item has-text">
-                            <figure>
-                                <div class="overlay"><i class="ti-plus"></i></div>
-                                <img src="images/img_3.jpg" alt="Image" class="img-responsive">
-                            </figure>
-                            <div class="sticks-text text-left">
-                                <h2>25 Minimal Web Design for Inspiration</h2>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-                                <p class="sticks-category">Sep. 25th, 2016 by John Doe</p>
+                            <div class="tab-pane" role="tabpanel" id="step2">
+                                <h3>Paso 2</h3>
+                                <p>Indícanos tu dirección y lo que deseas ordenar</p>
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
+                                    <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
+                                </ul>
                             </div>
-                        </a>
-                    </div>
-                    <div class="clearfix visible-lg-block visible-md-block"></div>
-
-                    <div class="col-md-4">
-                        <a href="#" class="sticks-card-item has-text">
-                            <figure>
-                                <div class="overlay"><i class="ti-plus"></i></div>
-                                <img src="images/img_4.jpg" alt="Image" class="img-responsive">
-                            </figure>
-                            <div class="sticks-text text-left">
-                                <h2>25 Minimal Web Design for Inspiration</h2>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-                                <p class="sticks-category">Sep. 25th, 2016 by John Doe</p>
+                            <div class="tab-pane" role="tabpanel" id="step3">
+                                <h3>Paso 3</h3>
+                                <p>Indícanos el método de pago</p>
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
+                                    <li><button type="button" class="btn btn-primary btn-info-full next-step">Siguiente</button></li>
+                                </ul>
                             </div>
-                        </a>
-                    </div>
-                    <div class="clearfix visible-sm-block"></div>
-
-                    <div class="col-md-4">
-                        <a href="#" class="sticks-card-item has-text">
-                            <figure>
-                                <div class="overlay"><i class="ti-plus"></i></div>
-                                <img src="images/img_5.jpg" alt="Image" class="img-responsive">
-                            </figure>
-                            <div class="sticks-text text-left">
-                                <h2>25 Minimal Web Design for Inspiration</h2>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-                                <p class="sticks-category">Sep. 25th, 2016 by John Doe</p>
+                            <div class="tab-pane" role="tabpanel" id="complete">
+                                <h3>¡Listo!</h3>
+                                <p>Tú pedido se estará pronto en la puerta de tu casa</p>
                             </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="#" class="sticks-card-item has-text">
-                            <figure>
-                                <div class="overlay"><i class="ti-plus"></i></div>
-                                <img src="images/img_6.jpg" alt="Image" class="img-responsive">
-                            </figure>
-                            <div class="sticks-text text-left">
-                                <h2>25 Minimal Web Design for Inspiration</h2>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
-                                <p class="sticks-category">Sep. 25th, 2016 by John Doe</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="clearfix visible-lg-block visible-md-block"></div>
-                    <div class="clearfix visible-sm-block"></div>
-
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
                 </div>
             </div>
+        </div>
         </div>
 
         <div class="sticks-section-overflow">
@@ -337,16 +325,16 @@
                     <div class="row">
                         <div class="owl-carousel owl-carousel-carousel">
                             <div class="item">
-                                <img src="images/img_1.jpg" alt="Free HTML5 Bootstrap Template by GetTemplates.co">
+
                             </div>
                             <div class="item">
-                                <img src="images/img_2.jpg" alt="Free HTML5 Bootstrap Template by GetTemplates.co">
+
                             </div>
                             <div class="item">
-                                <img src="images/img_3.jpg" alt="Free HTML5 Bootstrap Template by GetTemplates.co">
+
                             </div>
                             <div class="item">
-                                <img src="images/img_4.jpg" alt="Free HTML5 Bootstrap Template by GetTemplates.co">
+
                             </div>
                         </div>
                     </div>
@@ -356,46 +344,16 @@
         </div>
 
 
-        <div id="sticks-subscribe">
-            <div class="sticks-container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2 text-center sticks-heading">
-                        <h2>Subscribe</h2>
-                        <p>Be the first to know about the new templates.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <form class="form-inline">
-                            <div class="col-md-4 col-sm-4">
-                                <div class="form-group">
-                                    <label for="email" class="sr-only">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-4">
-                                <div class="form-group">
-                                    <label for="name" class="sr-only">Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-4">
-                                <button type="submit" class="btn btn-danger btn-block">Subscribe</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div id="sticks-contact" data-section="contact" class="sticks-cover sticks-cover-xs" style="background-image:url(images/img_bg_2.jpg);">
+
+        <div id="contact" data-section="contact" class="sticks-cover sticks-cover-xs" style="background-image:url(images/background-1.png);">
             <div class="overlay"></div>
             <div class="sticks-container">
                 <div class="row text-center">
                     <div class="display-t">
                         <div class="display-tc">
                             <div class="col-md-12">
-                                <h3>If you have inqueries please email us at <a href="#">info@yourdomain.com</a></h3>
+                                <h3 class="contact-text">Puedes contactarnos a través del correo {{'hola@stickschile.com'}}</a></h3>
                             </div>
                         </div>
                     </div>
@@ -410,15 +368,14 @@
                 <div class="row copyright">
                     <div class="col-md-12">
                         <p class="pull-left">
-                            <small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
-                            <small class="block">Designed by <a href="http://gettemplates.co/" target="_blank">GetTemplates.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+                            <small class="block">&copy; {{date('Y')}} Sticks. Todos los derechos reservados.</small>
+                            <small class="block">Designed by <a href="http://gettemplates.co/" target="_blank">Sticks</a></small>
                         </p>
                         <p class="pull-right">
                         <ul class="sticks-social-icons pull-right">
-                            <li><a href="#"><i class="icon-twitter"></i></a></li>
-                            <li><a href="#"><i class="icon-facebook"></i></a></li>
-                            <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                            <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                            <li><a href="https://www.instagram.com/stickschile" target="_blank"><i class="icon-instagram"></i></a></li>
+                            <li><a href="https://www.facebook.com/stickschile" target="_blank"><i class="icon-facebook"></i></a></li>
+
                         </ul>
                         </p>
                     </div>

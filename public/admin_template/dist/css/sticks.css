@@ -1,0 +1,45 @@
+.btn-sticks {
+    color: #ffffff;
+    background-color: #fc910a;
+    border-color: #fc910a;; }
+.btn-sticks:hover {
+    color: #ffffff;
+    background-color: #fc8407;
+    border-color: #fc8407; }
+.btn-sticks:focus, .btn-sticks.focus {
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 188, 52, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(255, 188, 52, 0.5); }
+.btn-sticks.disabled, .btn-sticks:disabled {
+    color: #212529;
+    background-color: #ffbc34;
+    border-color: #ffbc34; }
+.btn-sticks:not(:disabled):not(.disabled):active, .btn-sticks:not(:disabled):not(.disabled).active,
+.show > .btn-sticks.dropdown-toggle {
+    color: #212529;
+    background-color: #ffab01;
+    border-color: #f3a300; }
+.btn-sticks:not(:disabled):not(.disabled):active:focus, .btn-sticks:not(:disabled):not(.disabled).active:focus,
+.show > .btn-sticks.dropdown-toggle:focus {
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 188, 52, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(255, 188, 52, 0.5); }
+
+img.light-logo {
+
+    width: 104px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.topbar .top-navbar .navbar-header .navbar-brand {
+
+    display: block;
+
+}
+
+.bg-success {
+    background-color: #fc910a!important;
+}
+
+html[dir=ltr] body .m-t-15 {
+    margin-top: 9px;
+}
